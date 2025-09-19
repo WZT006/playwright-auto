@@ -31,12 +31,14 @@ test('Verify navbar handbook leads to the correct url', async({ page, context })
   const newPage = await pagePromise;
   await expect(newPage.getByRole('link', { name: 'Anycase.ai Knowledge Base' })).toBeVisible();
   await expect(newPage.getByRole('contentinfo').getByRole('img', { name: 'Anycase.ai Knowledge Base' })).toBeVisible();
-  await expect(newPage).toHaveURL(/helpdesk\.anycase\.ai/);
+  await expect(newPage).toHaveURL(/help\.anycase\.ai/);
 });
 
 test('Verify navbar profile button redirects correctly', async({page}) => {
   await expect(page.getByTestId('user-tier')).toBeVisible();
-  await page.getByRole('link', { name: 'View your account details' }).click();
+  await page.waitForTimeout(1000);
+  // await page.getByRole('button', { name: 'View your account details' }).click();
+  await page.getByTestId('user-profile').click()
   await expect(page.getByRole('heading', { name: 'Profile Information' })).toBeVisible();
 
   await expect(page).toHaveURL(CONFIG.URL+'profile');

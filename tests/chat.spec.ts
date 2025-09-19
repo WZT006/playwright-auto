@@ -95,7 +95,7 @@ test('Verify all preset queries are visible', async ({ page }) => {
     await expect(page.getByRole('main')).toContainText('Explain the Right to Inspection of Stockholders and Members under the Revised Corporation Code.');
     await expect(page.getByRole('main')).toContainText('Explain the elements of a contract.');
   })
-  await page.getByRole('heading', { name: 'Search or ask a question' }).click()
+  await page.getByRole('heading', { name: 'What\'s the matter? Just ask' }).click()
   await test.step('Select Find Preset', async()=> {
     await page.getByRole('button', { name: 'Find' }).click();
     await expect(page.getByRole('main')).toContainText('Find Hocheng Philippines Corporation v. Farrales, G.R. No. 211497 (2015)');
@@ -103,7 +103,7 @@ test('Verify all preset queries are visible', async ({ page }) => {
     await expect(page.getByRole('main')).toContainText('Find Narra Nickel Mining v. Redmont Consolidated Mines Corp., G.R. No. 195580 (2014)');
     await expect(page.getByRole('main')).toContainText('Find the elements of Art. 138 - Inciting to Rebellion or Insurrection.');
   })
-  await page.getByRole('heading', { name: 'Search or ask a question' }).click()
+  await page.getByRole('heading', { name: 'What\'s the matter? Just ask' }).click()
   await test.step('Select Draft Preset', async()=> {
     await page.getByRole('button', { name: 'Draft' }).click();
     await expect(page.getByRole('main')).toContainText('Draft a sample employment contract for a computer programmer.');
@@ -111,7 +111,7 @@ test('Verify all preset queries are visible', async ({ page }) => {
     await expect(page.getByRole('main')).toContainText('Draft a template Articles of Incorporation for corporation X.');
     await expect(page.getByRole('main')).toContainText('Draft a judicial affidavit for a respondent to an unintentional abortion case.');
   })
-  await page.getByRole('heading', { name: 'Search or ask a question' }).click()
+  await page.getByRole('heading', { name: 'What\'s the matter? Just ask' }).click()
   await test.step('Select Digest Preset', async()=> {
     await page.getByRole('button', { name: 'Digest' }).click();
     await expect(page.getByRole('main')).toContainText('Make a digest of the case of Alfredo Laya, Jr. v. PH Veterans Bank and Balbido.');
@@ -172,7 +172,7 @@ test('Verify user is able to delete existing chat', async ({ page }) => {
   await test.step('Navigate home and delete chat', async () => {
     await page.getByRole('link', { name: 'Home' }).click();
     await page.locator('#sidebar-content').getByRole('img').nth(2).click();
-    await page.getByText('Delete').first().click();
+    await page.getByText('Delete').nth(1).click();
     await page.waitForTimeout(2000);
   });
 
@@ -303,7 +303,7 @@ test('Verify all sources are available when all sources is enabled for libraries
     await expect(page.getByText('AN ACT TO PROVIDE FOR THE ORGANIZATION OF A NATIONAL EMPLOYMENT SERVICE')).toBeVisible();
 
     await page.getByRole('paragraph').filter({ hasText: /^Issuance$/ }).click()
-    await expect(page.getByText('DOLE Department Order No. 40, Series of 2003', { exact: true })).toBeVisible();
+    await expect(page.getByText('Amending the implementing Rules and Regulations of book VI of the Labor Code of the Philippines, as Amended', { exact: true })).toBeVisible();
   })
 
 })
